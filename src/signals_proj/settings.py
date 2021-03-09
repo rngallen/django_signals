@@ -26,6 +26,12 @@ SECRET_KEY = 't!do+lcg9qfn66yi@a6ix_dy^7qkpqvhklfiy3$8bs6s6-gf+l'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+INTERNAL_IPS = [
+    # ...
+    '127.0.0.1',
+    # ...
+]
+
 ALLOWED_HOSTS = []
 
 
@@ -44,12 +50,16 @@ INSTALLED_APPS = [
     'cars.apps.CarsConfig',
     'orders.apps.OrdersConfig',
     'sales.apps.SalesConfig',
+    'debug_toolbar',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
+
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
+    
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
